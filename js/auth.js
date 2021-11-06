@@ -1,6 +1,5 @@
 'use strict';
 
-//День 1
 const buttonAuth = document.querySelector('.button-auth');
 const modalAuth = document.querySelector('.modal-auth');
 const closeAuth = document.querySelector('.close-auth');
