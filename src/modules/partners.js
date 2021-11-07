@@ -1,7 +1,3 @@
-import {
-  toggleModalAuth
-} from "./auth";
-
 const partners = () => {
   'use strict';
 
@@ -41,7 +37,7 @@ const partners = () => {
         localStorage.setItem('restaurant', JSON.stringify(item));
         window.location.href = 'restaurant.html';
       } else {
-        toggleModalAuth();
+        document.querySelector('.modal-auth').classList.add('is-open');
       }
     });
     cardsRestaurants.append(a);

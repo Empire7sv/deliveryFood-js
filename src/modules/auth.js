@@ -1,19 +1,19 @@
-const buttonAuth = document.querySelector('.button-auth');
-const modalAuth = document.querySelector('.modal-auth');
-const closeAuth = document.querySelector('.close-auth');
-const logInForm = document.getElementById('logInForm');
-const inputLogin = document.getElementById('login');
-const inputPassword = document.getElementById('password');
-const userName = document.querySelector('.user-name');
-const buttonOut = document.querySelector('.button-out');
-
-export const toggleModalAuth = () => {
-  modalAuth.classList.toggle('is-open');
-  inputLogin.removeAttribute('style');
-};
-
 const auth = () => {
   'use strict';
+
+  const buttonAuth = document.querySelector('.button-auth');
+  const modalAuth = document.querySelector('.modal-auth');
+  const closeAuth = document.querySelector('.close-auth');
+  const logInForm = document.getElementById('logInForm');
+  const inputLogin = document.getElementById('login');
+  const inputPassword = document.getElementById('password');
+  const userName = document.querySelector('.user-name');
+  const buttonOut = document.querySelector('.button-out');
+
+  const toggleModalAuth = () => {
+    modalAuth.classList.toggle('is-open');
+    inputLogin.removeAttribute('style');
+  };
 
   const login = user => {
     if (user.login.trim() !== '') {
