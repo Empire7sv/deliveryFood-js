@@ -1,19 +1,19 @@
+const buttonAuth = document.querySelector('.button-auth');
+const modalAuth = document.querySelector('.modal-auth');
+const closeAuth = document.querySelector('.close-auth');
+const logInForm = document.getElementById('logInForm');
+const inputLogin = document.getElementById('login');
+const inputPassword = document.getElementById('password');
+const userName = document.querySelector('.user-name');
+const buttonOut = document.querySelector('.button-out');
+
+export const toggleModalAuth = () => {
+  modalAuth.classList.toggle('is-open');
+  inputLogin.removeAttribute('style');
+};
+
 const auth = () => {
   'use strict';
-
-  const buttonAuth = document.querySelector('.button-auth');
-  const modalAuth = document.querySelector('.modal-auth');
-  const closeAuth = document.querySelector('.close-auth');
-  const logInForm = document.getElementById('logInForm');
-  const inputLogin = document.getElementById('login');
-  const inputPassword = document.getElementById('password');
-  const userName = document.querySelector('.user-name');
-  const buttonOut = document.querySelector('.button-out');
-
-  const toggleModalAuth = () => {
-    modalAuth.classList.toggle('is-open');
-    inputLogin.removeAttribute('style');
-  };
 
   const login = user => {
     if (user.login.trim() !== '') {
@@ -33,7 +33,7 @@ const auth = () => {
     userName.removeAttribute('style');
     buttonOut.removeAttribute('style');
     buttonAuth.removeAttribute('style');
-    localStorage.removeItem('gloDeliveryJS');
+    localStorage.removeItem('user');
   };
   buttonOut.addEventListener('click', logout);
 
@@ -43,7 +43,7 @@ const auth = () => {
       login: inputLogin.value,
       password: inputPassword.value,
     };
-    localStorage.setItem('gloDeliveryJS', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
     login(user);
   });
 
@@ -55,8 +55,9 @@ const auth = () => {
     }
   });
 
-  if (localStorage.getItem('gloDeliveryJS')) {
-    login(JSON.parse(localStorage.getItem('gloDeliveryJS')));
+
+  if (localStorage.getItem('user')) {
+    login(JSON.parse(localStorage.getItem('user')));
   }
 };
 
