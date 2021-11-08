@@ -2,6 +2,7 @@ const menu = () => {
   'use strict';
 
   const cardsMenu = document.querySelector('.cards-menu');
+  const cartArray = JSON.parse(localStorage.getItem('cart')) || [];
 
   const changeTitle = ({
     name,
@@ -20,8 +21,23 @@ const menu = () => {
     restaurantCategory.textContent = kitchen;
   };
 
+  const addToCart = cartItem => {
+    if (cartArray.some(item => item.id === cartItem.id)) {
+      cartArray.map(item => {
+        if (item.id === cartItem.id) {
+          item.count++;
+        }
+        return item;
+      });
+    } else {
+      cartArray.push(cartItem);
+    }
+    localStorage.setItem('cart', JSON.stringify(cartArray));
+  };
+
   const renderItems = data => data.forEach(({
     description,
+    id,
     image,
     name,
     price
@@ -46,13 +62,23 @@ const menu = () => {
         </div>
       </div>
     `);
+
+    card.querySelector('.button-card-text').addEventListener('click', () => {
+      addToCart({
+        id,
+        name,
+        price,
+        count: 1,
+      });
+    });
+
     cardsMenu.insertAdjacentElement('beforeend', card);
   });
 
   if (localStorage.getItem('restaurant')) {
     const restaurant = JSON.parse(localStorage.getItem('restaurant'));
     changeTitle(restaurant);
-    fetch(`./db/${restaurant.products}`)
+    fetch(`https://deliveryfood-js-default-rtdb.firebaseio.com/db/${restaurant.products}`)
       .then(response => response.json())
       .then(data => renderItems(data))
       .catch(error => console.log(error));

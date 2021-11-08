@@ -1,7 +1,9 @@
 import auth from './modules/auth';
-import partners from './modules/partners';
+import cart from './modules/cart';
 import slider from './modules/slider';
+import partners from './modules/partners';
 
 auth();
-partners();
+cart();
 slider();
+partners();

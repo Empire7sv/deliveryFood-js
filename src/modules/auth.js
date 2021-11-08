@@ -2,6 +2,7 @@ const auth = () => {
   'use strict';
 
   const buttonAuth = document.querySelector('.button-auth');
+  const buttonCart = document.querySelector('.button-cart');
   const modalAuth = document.querySelector('.modal-auth');
   const closeAuth = document.querySelector('.close-auth');
   const logInForm = document.getElementById('logInForm');
@@ -22,6 +23,7 @@ const auth = () => {
       userName.style.display = 'inline';
       buttonOut.style.display = 'block';
       buttonAuth.style.display = 'none';
+      buttonCart.style.display = 'flex';
       modalAuth.classList.remove('is-open');
     } else {
       inputLogin.style.cssText = 'border: 2px solid #ff0000';
@@ -33,6 +35,7 @@ const auth = () => {
     userName.removeAttribute('style');
     buttonOut.removeAttribute('style');
     buttonAuth.removeAttribute('style');
+    buttonCart.removeAttribute('style');
     localStorage.removeItem('user');
   };
   buttonOut.addEventListener('click', logout);
