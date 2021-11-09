@@ -81,7 +81,7 @@ const menu = () => {
     fetch(`https://deliveryfood-js-default-rtdb.firebaseio.com/db/${restaurant.products}`)
       .then(response => response.json())
       .then(data => renderItems(data))
-      .catch(error => console.log(error));
+      .catch(error => console.error(error));
   } else {
     window.location.href = 'index.html';
   }

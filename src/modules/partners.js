@@ -46,7 +46,7 @@ const partners = () => {
   fetch('https://deliveryfood-js-default-rtdb.firebaseio.com/db/partners.json')
     .then(response => response.json())
     .then(data => renderItems(data))
-    .catch(error => console.log(error));
+    .catch(error => console.error(error));
 };
 
 export default partners;

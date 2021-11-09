@@ -65,8 +65,13 @@ const cart = () => {
       }
       return item;
     });
-    localStorage.setItem('cart', JSON.stringify(cartArray));
-    renderCart(cartArray);
+    const cartArrayFiltered = cartArray.filter(elem => elem.count !== 0);
+    if (cartArrayFiltered.length) {
+      localStorage.setItem('cart', JSON.stringify(cartArrayFiltered));
+      renderCart(cartArrayFiltered);
+    } else {
+      resetCart();
+    }
   };
 
   modalBody.addEventListener('click', event => {
